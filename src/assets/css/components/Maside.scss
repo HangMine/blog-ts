@@ -1,0 +1,97 @@
+.M_Aside {
+    background: #404040;
+    color: #f2f2f2;
+    height: 100vh;
+    min-width: 200px;
+
+    * {
+        color: inherit;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    h4 {
+        padding: 15px;
+        margin: 0;
+        cursor: pointer;
+        font-weight: bolder;
+
+        span {
+            margin-left: 4px;
+        }
+    }
+
+    .maside-collapse {
+        padding: 0 20px;
+
+        input {
+            background: #595959;
+            color: #ccc;
+            border: 1px solid #333;
+        }
+
+        i {
+            color: #ccc;
+        }
+
+        .btn-group {
+            text-align: center;
+            padding: 5px 0 10px 0;
+
+            .btn-cancel {
+                color: #999;
+
+                &:hover {
+                    color: #b3b3b3;
+                }
+            }
+        }
+    }
+
+    ul {
+        li {
+            padding: 0 15px;
+            line-height: 40px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #666;
+                border-left: 3px solid #ec7259;
+                padding-left: 12px;
+            }
+
+            .icon-wrap {
+                float: right;
+                width: 40px;
+                text-align: center;
+            }
+        }
+    }
+
+
+
+
+}
+
+.M_Aside_pop {
+    .ant-popover-inner-content {
+        padding: 0;
+    }
+
+    .M_Aside_opreate {
+
+        margin-bottom: 0;
+
+        li {
+            padding: 10px 15px;
+            font-weight: bold;
+            cursor: pointer;
+
+
+            &:first-child {
+                border-bottom: 1px solid #d9d9d9;
+            }
+        }
+
+    }
+}

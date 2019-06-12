@@ -1,0 +1,43 @@
+//提交按钮
+.btn-commit {
+    color: #42c02e !important;
+    border-color: #42c02e !important;
+
+    &:hover {
+        background-color: #40453f !important;
+    }
+}
+
+//取消按钮
+.btn-cancel {
+    border: none !important;
+
+    &:hover {
+        color: #b3b3b3 !important;
+    }
+}
+
+//去除input框边框样式
+.rm-antd-border {
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        .ant-input {
+            border: none;
+        }
+    }
+
+    .ant-input {
+        transition: none;
+
+        &:focus {
+            box-shadow: none;
+        }
+
+    }
+
+
+
+}

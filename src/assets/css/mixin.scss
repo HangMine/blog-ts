@@ -1,0 +1,88 @@
+@import "./var.scss";
+
+@mixin border($type:"") {
+    @if $type==top {
+        border-top: 1px solid $color-border;
+    }
+
+    @else if $type==bottom {
+        border-bottom: 1px solid $color-border;
+    }
+
+    @else if $type==left {
+        border-left: 1px solid $color-border;
+    }
+
+    @else if $type==right {
+        border-right: 1px solid $color-border;
+    }
+
+    @else {
+        border: 1px solid $color-border;
+    }
+}
+
+@mixin position($type:"", $length:0) {
+    position: absolute;
+
+    @if($type==top) {
+        top: $length;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    @else if ($type==bottom) {
+        bottom: $length;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    @else if ($type==left) {
+        left: $length;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+
+    @else if ($type==right) {
+        right: $length;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+
+    @else {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+}
+
+@mixin shade($opacity:0.5) {
+    //遮罩层
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, $opacity);
+
+}
+
+@mixin ellipsis($line:1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+
+    @if($line==1) {
+        white-space: nowrap;
+    }
+
+    @else {
+        display: -webkit-box;
+        -webkit-line-clamp: $line;
+        //-webkit-box-orient属性会被插件过滤，需增加以下注释
+        /* autoprefixer: ignore next */
+        -webkit-box-orient: vertical;
+    }
+
+}
