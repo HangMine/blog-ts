@@ -2,15 +2,6 @@ import React, { useState, useEffect, useRef, ReactNode } from "react";
 import style from "@css/base/Collapse.module.scss";
 import PropTypes from "prop-types";
 
-type LinkedList<T> = T & { next: LinkedList<T> };
-
-interface Person {
-  name: string;
-}
-
-var people: LinkedList<Person>;
-var s = { name: "test" };
-console.log(s);
 
 type props = {
   header: ReactNode;

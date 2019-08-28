@@ -4,17 +4,11 @@ import Index from "@/views";
 import Login from "@/views/Login";
 import history from "@/router/history";
 
-import { useDispatch } from "redux-react-hook";
-import { fetchArtcile, fetchArtcileType } from '@/redux/actions';
+import { connect } from "react-redux";
 
-const init = () => {
-  const dispatch = useDispatch();
-  dispatch(fetchArtcile('/getArticle'));
-  dispatch(fetchArtcileType());
-}
-
-export const App = () => {
-  init();
+export function App(props: any) {
+  const { counter, increment, decrement } = props;
+  console.log(counter);
   return (
     <Router history={history}>
       <div className="app">
@@ -26,7 +20,20 @@ export const App = () => {
   );
 }
 
-export default App;
+
+const mapStateToProps = (state: any) => ({
+  counter: state.counter
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  increment: () => dispatch({ type: "INCREMENT" }),
+  decrement: () => dispatch({ type: "DECREMENT" })
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 
 
 

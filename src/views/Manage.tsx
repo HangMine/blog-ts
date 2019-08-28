@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Maside from "@/components/Maside";
+import AddType from "@/components/manage/AddType";
+import AddArticle from "@/components/manage/AddArticle";
 import { Row, Col } from "antd";
 class Manage extends Component {
   render() {
@@ -7,7 +8,10 @@ class Manage extends Component {
       <div>
         <Row>
           <Col span={4}>
-            <Maside />
+            <AddType />
+          </Col>
+          <Col span={6}>
+            <AddArticle />
           </Col>
         </Row>
       </div>

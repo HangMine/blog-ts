@@ -11,6 +11,7 @@
     "@types/react-dom": "16.8.2",
     "@types/react-router": "^4.4.5",
     "@types/react-router-dom": "^4.3.2",
+    "@types/redux-logger": "^3.0.7",
     "antd": "^3.16.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
@@ -33,6 +34,7 @@
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.1",
+    "history": "^4.9.0",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
@@ -50,8 +52,13 @@
     "react-app-polyfill": "^0.2.1",
     "react-dev-utils": "^7.0.3",
     "react-dom": "^16.8.3",
+    "react-redux": "^7.1.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-react-hook": "^3.3.2",
+    "redux-thunk": "^2.3.0",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
@@ -128,7 +135,9 @@
     ]
   },
   "devDependencies": {
+    "@types/react-redux": "^7.1.2",
     "babel-plugin-import": "^1.11.0",
-    "node-sass": "^4.11.0"
+    "node-sass": "^4.11.0",
+    "redux-devtools": "^3.5.0"
   }
 }

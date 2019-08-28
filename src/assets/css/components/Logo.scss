@@ -1,0 +1,21 @@
+.aside-logo {
+  padding: 20px;
+  text-align: center;
+
+  .logo-title {
+    color: white;
+    font-size: 12px;
+  }
+
+  .logo-operate {
+    overflow: hidden;
+    color: white;
+    font-size: 12px;
+
+    .cancel {
+      float: right;
+      cursor: pointer;
+    }
+
+  }
+}

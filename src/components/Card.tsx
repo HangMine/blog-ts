@@ -6,7 +6,8 @@ type cardItemProps = {
   data: {
     img: string;
     title: string;
-    type?: number;
+    typeLogo: string;
+    typeName: string;
   };
 };
 
@@ -21,17 +22,11 @@ class CardItem extends Component<cardItemProps> {
   // }
   render() {
     const data = this.props.data;
-    const typeTrans = [
-      { name: "Other", logo: "icon-gengduo" },
-      { name: "Notes", logo: "icon-rizhi" },
-      { name: "Code", logo: "icon-wulumuqishigongandashujuguanlipingtai-ico-" },
-      { name: "Game", logo: "icon-youxi" },
-    ];
-    const type = typeTrans[data.type || 0];
+
     return (
       <div className="h-card-item">
         <div className="main">
-          <div className="img" style={{ backgroundImage: `url(${data.img})` }} />
+          <div className="img" style={{ backgroundImage: `url(http://127.0.0.1:8888${data.img})` }} />
           <div className="info">
             <a href="//" className="title">
               {data.title}
@@ -39,11 +34,11 @@ class CardItem extends Component<cardItemProps> {
             <div className="type">
               <div className="type-logo">
                 <svg className="icon" style={{ fontSize: 25 }}>
-                  <use xlinkHref={`#${type.logo}`} />
+                  <use xlinkHref={`#${data.typeLogo}`} />
                 </svg>
               </div>
               <a href="//" className="type-name">
-                {type.name}
+                {data.typeName}
               </a>
             </div>
           </div>

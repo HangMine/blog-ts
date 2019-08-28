@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
+import React, { Component, PureComponent } from "react";
 import { Layout } from "antd";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "@/views/Home";
 import Manage from "@/views/Manage";
 
@@ -9,12 +9,12 @@ const { Content } = Layout;
 class Main extends PureComponent {
   render() {
     return (
-      <Router>
-        <Content>
-          <Route exact path="/" component={Home} />
-          <Route path="/manage" component={Manage} />
-        </Content>
-      </Router>
+      <Content>
+        <Switch>
+          <Route path="/app/home" component={Home} />
+          <Route path="/app/manage" component={Manage} />
+        </Switch>
+      </Content>
     );
   }
 }

@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react";
-import { Avatar } from "antd";
+import { Avatar, Icon } from "antd";
+import "@css/Logo.scss";
+import { useDispatch } from "redux-react-hook";
 
 type props = {
   icon: ReactNode;
@@ -9,15 +11,21 @@ type props = {
 };
 
 function Logo({ icon, title, size, src }: props) {
+  const dispatch = useDispatch();
   //可传入图标或默认显示用户头像
-  const Icon = () => {
+  const logo = () => {
     return icon || <Avatar size={size} src={src} icon="user" />;
   };
-
+  const toLogin = () => {
+    dispatch({ type: 'TO_ROUTER', url: '/login' })
+  }
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      {Icon()}
-      <div style={{ color: "white", fontSize: "12px" }}>{title}</div>
+    <div className='aside-logo'>
+      {logo()}
+      <div className='logo-title'>{title}</div>
+      <div className="logo-operate">
+        <span className='cancel' onClick={toLogin}><Icon type="poweroff" /> 注销</span>
+      </div>
     </div>
   );
 }

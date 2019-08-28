@@ -13,7 +13,8 @@
         margin-right: 0;
     }
 
-    >span {
+    >span,
+    a {
         display: block;
         text-align: center;
         padding-bottom: 10px;
@@ -30,7 +31,8 @@
     .ant-menu-submenu-title {
         @include menu-wrap;
 
-        >span {
+        >span,
+        a {
             @include menu;
         }
     }

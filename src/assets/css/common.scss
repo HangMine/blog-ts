@@ -1,3 +1,8 @@
+// 设置显示高度为屏幕高度
+.ant-layout-sider {
+    height: 100vh;
+}
+
 //提交按钮
 .btn-commit {
     color: #42c02e !important;
@@ -38,6 +43,37 @@
 
     }
 
+}
 
+// 弹出的编辑框
+.operate-pop {
+    .ant-popover-inner-content {
+        padding: 0;
+    }
 
+    ul {
+        overflow: hidden;
+        border-radius: 4px;
+        margin-bottom: 0;
+
+        li {
+            padding: 10px 15px;
+            font-weight: bold;
+            cursor: pointer;
+
+            i {
+                margin-right: 5px;
+            }
+
+            &:first-child {
+                border-bottom: 1px solid #d9d9d9;
+            }
+
+            &:hover {
+                background: #666;
+                color: white;
+            }
+        }
+
+    }
 }

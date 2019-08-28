@@ -2,7 +2,8 @@
     background: #404040;
     color: #f2f2f2;
     height: 100vh;
-    min-width: 200px;
+    overflow: auto;
+    // min-width: 200px;
 
     * {
         color: inherit;
@@ -51,13 +52,13 @@
     ul {
         li {
             padding: 0 15px;
+            border-left: 3px solid transparent;
             line-height: 40px;
             cursor: pointer;
 
             &:hover {
                 background-color: #666;
-                border-left: 3px solid #ec7259;
-                padding-left: 12px;
+                border-left-color: #ec7259;
             }
 
             .icon-wrap {
@@ -71,27 +72,4 @@
 
 
 
-}
-
-.M_Aside_pop {
-    .ant-popover-inner-content {
-        padding: 0;
-    }
-
-    .M_Aside_opreate {
-
-        margin-bottom: 0;
-
-        li {
-            padding: 10px 15px;
-            font-weight: bold;
-            cursor: pointer;
-
-
-            &:first-child {
-                border-bottom: 1px solid #d9d9d9;
-            }
-        }
-
-    }
 }
