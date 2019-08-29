@@ -3,15 +3,12 @@ import history from "@/router/history";
 
 const BASE_URL = 'http://127.0.0.1:8888';
 
-// 默认配置
-interface defaultOptions {
-  credentials: "same-origin" | "omit" | "include" | undefined,
-  cache: 'no-cache' | 'reload' | 'force-cache' | 'only-if-cached' | undefined,
-}
-const defaultOptions: defaultOptions = {
+// 默认配置(RequestInit是fetch的设置类型)
+const defaultOptions: RequestInit = {
   credentials: "include", //强制带上cookies
   cache: 'no-cache'
 }
+
 // 当传的是整个对象的方式，必须包括URL
 interface allOption {
   url: string,
@@ -25,7 +22,6 @@ interface options {
   headers?: object,
   hideMsg?: boolean
 }
-
 // 主函数(有简便传法和全对象传法)
 function http(firstParam: string | allOption, params?: Object, options?: options) {
   let url = BASE_URL, resOptions: any = {};
@@ -33,10 +29,10 @@ function http(firstParam: string | allOption, params?: Object, options?: options
   url += typeof firstParam === 'string' ? firstParam : firstParam.url;
   params = typeof firstParam === 'string' ? params : firstParam.params;
   options = typeof firstParam === 'string' ? options : firstParam;
-
+  let postOptions = {};
   if (options && options.method === 'POST') {
     // POST
-    params = {
+    postOptions = {
       headers: {
         'Content-Type': 'application/json',
         ...options.headers
@@ -47,7 +43,7 @@ function http(firstParam: string | allOption, params?: Object, options?: options
     // GET
     url = params2query(url, params);
   }
-  resOptions = { ...defaultOptions, ...options, ...params };
+  resOptions = { ...defaultOptions, ...options, ...postOptions };
 
 
   const res: Promise<any> = new Promise((resolve, reject) => {
