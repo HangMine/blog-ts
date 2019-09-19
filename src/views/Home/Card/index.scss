@@ -1,0 +1,134 @@
+@import "@/assets/css/var.scss";
+@import "@/assets/css/mixin.scss";
+
+.h-card {
+    overflow: hidden;
+
+    .h-card-item {
+        width: 33.3%;
+        padding: 15px;
+        float: left;
+
+        .main {
+            position: relative;
+            overflow: hidden;
+            background: white;
+            @include border;
+            border-radius: 5px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
+
+            .img {
+                width: 100%;
+                min-height: 240px;
+                transition: all .3s;
+                background-position: 50% 50%;
+                background-size: cover;
+            }
+
+            .info {
+                position: relative;
+                padding: 20px;
+                background: white;
+                z-index: 5;
+
+                .title {
+                    position: relative;
+                    margin-bottom: 10px;
+                    font-size: 18px;
+                    color: $color-font-title;
+                    @include ellipsis(2);
+                }
+
+                .type {
+                    overflow: hidden;
+
+                    .type-logo {
+                        float: right;
+                        width: 40px;
+                        height: 40px;
+                        @include border;
+                        border-radius: 50%;
+                        position: relative;
+
+                        svg {
+                            @include position;
+                        }
+                    }
+
+                    .type-name {
+                        float: right;
+                        padding-right: 10px;
+                        color: $color-font-main;
+                        margin-top: 10px;
+                    }
+                }
+            }
+
+            .rotate-shade {
+                position: absolute;
+                bottom: 50px;
+                left: 0;
+                width: 125%;
+                height: 100px;
+            }
+
+            .rotate-shade.black {
+                transform: rotate(-7deg) translate(-5px, -25px);
+                background-color: rgba(0, 0, 0, .4);
+                z-index: 3;
+            }
+
+            .rotate-shade.white {
+                transform: rotate(7deg) translate(-25px, -10px);
+                background-color: white;
+                z-index: 4;
+            }
+
+            .shade {
+                opacity: 0;
+                z-index: 2;
+                @include shade;
+                padding: 40px 30px;
+                transition: all .3s;
+                cursor: pointer;
+
+                p {
+                    position: relative;
+                    top: 10px;
+                    transition: all .3s;
+                    color: white;
+                }
+            }
+
+            &:hover {
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, .1);
+
+                .img {
+                    transform: scale(1.1);
+                    filter: blur(3px);
+                }
+
+                .shade {
+                    opacity: 1;
+
+                    p {
+                        top: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width:880px) {
+        .h-card-item {
+            width: 50%;
+        }
+
+    }
+
+    @media (max-width:580px) {
+        .h-card-item {
+            width: 100%;
+        }
+    }
+}

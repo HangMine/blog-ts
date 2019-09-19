@@ -10,7 +10,7 @@ const loggerMiddleware = createLogger()
 export const store = createStore(
   rootReducer,
   applyMiddleware(
-    thunkMiddleware, // 允许我们 dispatch() 函数
+    thunkMiddleware, // redux异步中间件,允许我们 dispatch() 函数
     loggerMiddleware // 打印 action 日志
   )
 );

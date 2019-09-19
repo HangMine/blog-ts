@@ -9,8 +9,9 @@ import { fetchArtcile, fetchArtcileType } from '@/redux/actions';
 
 const init = () => {
   const dispatch = useDispatch();
-  dispatch(fetchArtcile('/getArticle'));
+  dispatch(fetchArtcile());
   dispatch(fetchArtcileType());
+
 }
 
 export const App = () => {

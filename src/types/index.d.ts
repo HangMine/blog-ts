@@ -1,3 +1,8 @@
+// 
+interface obj {
+  [any: string]: any
+}
+
 // 文章
 interface article {
   id: number,

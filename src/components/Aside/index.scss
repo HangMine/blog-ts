@@ -1,0 +1,39 @@
+@import "@/assets/css/var.scss";
+
+@mixin menu-wrap {
+    padding: 0 !important;
+    height: auto !important;
+    line-height: normal !important;
+}
+
+@mixin menu {
+    >i {
+        display: block;
+        padding: 10px;
+        margin-right: 0;
+    }
+
+    >span,
+    a {
+        display: block;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+}
+
+//修改antd原本的菜单样式
+.h-menu {
+    .ant-menu-item {
+        @include menu-wrap;
+        @include menu;
+    }
+
+    .ant-menu-submenu-title {
+        @include menu-wrap;
+
+        >span,
+        a {
+            @include menu;
+        }
+    }
+}

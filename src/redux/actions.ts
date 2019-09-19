@@ -1,4 +1,10 @@
-import http from "@/assets/js/http"
+// rest请求
+// import http from "@/assets/js/http"
+
+// graph
+import graph from "@/assets/js/graph"
+import { gql } from "apollo-boost";
+
 // 路由跳转
 export const toRouter = (url: string) => {
   return { type: 'TO_ROUTER', url }
@@ -16,7 +22,16 @@ export const receiveArticleType = (res: res) => {
 export const fetchArtcileType = (url: string = '/getArticleType') => {
   return (dispatch: dispatch) => {
     dispatch(requestArticleType());
-    return http(url).then(res => dispatch(receiveArticleType(res)));
+    const _gql: any = gql`
+    {
+      articleTypes{
+          id
+          name
+          icon
+      }
+    }
+      `
+    return graph(_gql).then(res => dispatch(receiveArticleType(res)));
   }
 }
 
@@ -32,7 +47,18 @@ export const receiveArticle = (res: res) => {
 export const fetchArtcile = (url: string = '/getArticle') => {
   return (dispatch: dispatch) => {
     dispatch(requestArticle());
-    return http(url).then(res => dispatch(receiveArticle(res)))
+    const _gql: any = gql`
+    {
+      articles{
+          id
+          type
+          img 
+          title
+      }
+    }
+      `
+
+    return graph(_gql).then(res => dispatch(receiveArticle(res)))
   }
 }
 

@@ -18,7 +18,6 @@ body {
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
 }
 
 ul {
@@ -30,4 +29,8 @@ ul {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
+}
+
+input:-webkit-autofill {
+    transition: color 99999s ease-out, background-color 99999s ease-out;
 }

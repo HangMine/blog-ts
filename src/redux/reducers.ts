@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import history from '@/router/history';
+import { platform } from "@/assets/js/check";
 
 interface action {
   type: string,
@@ -14,6 +15,7 @@ const to = (url: string) => {
 }
 
 const initialState = {
+  isMobile: platform.isMobile,
   url: '',
   article: {
     isFetching: false,
@@ -23,6 +25,10 @@ const initialState = {
     isFetching: false,
     list: []
   }
+}
+console.log(initialState);
+const isMobile = (state = initialState.isMobile) => {
+  return state;
 }
 
 const url = (state = initialState.url, action: action) => {
@@ -47,7 +53,7 @@ const article = (state = initialState.article, action: action) => {
     case "RECEIVE_ARTICLE":
       return {
         isFetching: false,
-        list: action.res.data,
+        list: action.res.data.articles,
       }
     default:
       return state;
@@ -66,7 +72,7 @@ const articleType = (state = initialState.articleType, action: action) => {
         ...state,
         ...{
           isFetching: false,
-          list: action.res.data
+          list: action.res.data.articleTypes
         }
       }
     default:
@@ -75,6 +81,7 @@ const articleType = (state = initialState.articleType, action: action) => {
 }
 
 const app = combineReducers({
+  isMobile,
   url,
   article,
   articleType

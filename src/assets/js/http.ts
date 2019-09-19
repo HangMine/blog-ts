@@ -65,7 +65,7 @@ function http(firstParam: string | allOption, params?: Object, options?: options
         const msg = res && res.msg;
         const type = isSuccess ? 'success' : 'error';
         if (msg && !resOptions.hideMsg) message[type](msg);
-        // 这里不返回reject,如果返回了，调用时不使用catch会报警告
+        // 这里不返回reject,如果返回了，调用时不使用catch会报警告(不返回是不是无法catch，需要检查)
         if (isSuccess) resolve(res);
 
       })
