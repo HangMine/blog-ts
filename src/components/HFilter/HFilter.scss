@@ -1,0 +1,19 @@
+.h-filter {
+  margin-bottom: 16px;
+
+  // 所有按钮
+  .ant-btn {
+    +.ant-btn {
+      margin-left: 10px;
+    }
+  }
+
+  .has-error {
+    .ant-upload {
+      .ant-btn {
+        border-color: #f5222d;
+      }
+    }
+  }
+
+}

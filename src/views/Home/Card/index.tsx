@@ -1,6 +1,7 @@
-import React, { Component, ReactNode } from "react";
+import React, { Children, Component, ReactNode } from "react";
+import { Empty } from "antd";
 import "./index.scss";
-import { string } from "prop-types";
+import { SERVER } from "@/assets/js/http";
 
 type cardItemProps = {
   data: {
@@ -8,13 +9,15 @@ type cardItemProps = {
     title: string;
     typeLogo: string;
     typeName: string;
+    [any: string]: any;
   };
+  onClick?: () => void;
 };
 
 class CardItem extends Component<cardItemProps> {
   //通过设置静态属性来设置默认值
   static defaultProps = {
-    data: {},
+    data: {}
   };
   //由于不需要设置state。所以无需继承this
   // constructor(props:cardItemProps) {
@@ -25,30 +28,29 @@ class CardItem extends Component<cardItemProps> {
 
     return (
       <div className="h-card-item">
-        <div className="main">
-          <div className="img" style={{ backgroundImage: `url(http://127.0.0.1:8888${data.img})` }} />
+        <div
+          className="main"
+          onClick={() => this.props.onClick && this.props.onClick()}
+        >
+          <div
+            className="img"
+            style={{ backgroundImage: `url(${SERVER}${data.img})` }}
+          />
           <div className="info">
-            <a href="//" className="title">
-              {data.title}
-            </a>
+            <a className="title">{data.title}</a>
             <div className="type">
               <div className="type-logo">
                 <svg className="icon" style={{ fontSize: 25 }}>
                   <use xlinkHref={`#${data.typeLogo}`} />
                 </svg>
               </div>
-              <a href="//" className="type-name">
-                {data.typeName}
-              </a>
+              <a className="type-name">{data.typeName}</a>
             </div>
           </div>
           <div className="rotate-shade black" />
           <div className="rotate-shade white" />
           <div className="shade">
-            <p>
-              上一篇介绍了 Webpack 优化项目的四种技巧，分别是通过 UglifyJS 插件实现对 JavaScript
-              文件的压缩，css-loade...
-            </p>
+            <p>{data.content_text}</p>
           </div>
         </div>
       </div>
@@ -60,9 +62,13 @@ type cardProps = {
   children: ReactNode;
 };
 
-function Card({ children }: cardProps) {
-  return <div className="h-card">{children}</div>;
-}
+const Card = ({ children }: cardProps) => {
+  return (
+    <div className="h-card">
+      {React.Children.count(children) ? children : <Empty></Empty>}
+    </div>
+  );
+};
 
 Card.Item = CardItem;
 

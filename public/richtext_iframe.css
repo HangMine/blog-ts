@@ -1,0 +1,62 @@
+.uploaded-img-wrap {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.uploaded-img-wrap>img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* 上传照片面板 */
+.img-upload-panel {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  width: 400px;
+}
+
+.img-upload-panel .left {
+  width: 64px;
+  height: 64px;
+}
+
+.img-upload-panel .right {
+  display: inline-block;
+  width: calc(100% - 84px);
+  vertical-align: 40px;
+  margin-left: 20px;
+}
+
+.img-upload-panel .right .btn-group {
+  display: block;
+  float: right;
+  padding: 20px 10px 0 0;
+  font-size: 13px;
+  color: #999;
+}
+
+.img-upload-panel .right .btn-group .tip {
+  color: red;
+  margin-right: 50px;
+}
+
+.img-upload-panel .right .btn-group .reupload {
+  cursor: pointer;
+}
+
+.img-upload-panel .right .btn-group .cancel {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* 引用 */
+blockquote {
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-left: 6px solid #b3b3b3;
+  word-break: break-word;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  margin: 0 0 20px;
+}

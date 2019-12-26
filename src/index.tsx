@@ -8,21 +8,28 @@ import * as serviceWorker from "./serviceWorker";
 import { StoreContext } from "redux-react-hook";
 import { store } from "@/redux/store";
 
+// 中文化
+import { ConfigProvider } from "antd";
+import zhCN from "antd/es/locale/zh_CN";
+
 // graph
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
+import { SERVER } from "@/assets/js/http";
 const client = new ApolloClient({
-  uri: 'http://localhost:8888/graphql',
+  uri: `${SERVER}/graphql`
 });
-
-
 
 ReactDOM.render(
   <StoreContext.Provider value={store}>
     <ApolloProvider client={client}>
-      <App />
+      <ConfigProvider locale={zhCN}>
+        <App />
+      </ConfigProvider>
     </ApolloProvider>
-  </StoreContext.Provider>, document.getElementById("root"));
+  </StoreContext.Provider>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

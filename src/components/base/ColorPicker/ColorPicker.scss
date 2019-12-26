@@ -1,0 +1,187 @@
+.h-color-picker {
+
+  display: inline-block;
+
+  // 显示按钮
+  .color-picker__btn {
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+
+    .color-picker__show {
+      height: 100%;
+      border: 1px solid #999;
+      border-radius: 2px;
+    }
+
+    >i {
+      font-size: 12px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      color: #fff;
+    }
+
+    >.anticon-close {
+      color: #999;
+    }
+  }
+
+}
+
+// 下拉面板（可能会放到body里面）
+.coloe-picker__panel_wrap {
+  transition: .3s;
+  transform-origin: center top;
+
+  .color-picker__panel {
+    width: 100%;
+
+
+    // sv面板
+    .color-pikcer__panel_sv {
+      position: relative;
+      width: 280px;
+      height: 180px;
+      margin-right: 20px;
+
+      .panel-mask {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+
+      }
+
+      .color-pikcer__panel_sv_white {
+
+        background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
+      }
+
+      .color-pikcer__panel_sv_black {
+
+        background: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+      }
+
+      .color-pikcer__panel_sv_cursor {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        box-shadow: 0 0 0 1.5px #fff, inset 0 0 1px 1px rgba(0, 0, 0, .3), 0 0 1px 2px rgba(0, 0, 0, .4);
+        border-radius: 50%;
+        transform: translate(-2px, -2px);
+      }
+    }
+
+
+    // sue面板
+    .color-pikcer__panel_hue {
+      float: right;
+      position: relative;
+      width: 12px;
+      padding: 2px 0;
+
+      .hue_bar {
+        height: 180px;
+        background: linear-gradient(to bottom, red 0, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, red);
+      }
+
+      .hue_thumb {
+        position: absolute;
+        left: 0;
+        cursor: pointer;
+        box-sizing: border-box;
+        width: 100%;
+        height: 4px;
+        border-radius: 1px;
+        background: #fff;
+        border: 1px solid #f0f0f0;
+        box-shadow: 0 0 2px rgba(0, 0, 0, .6);
+        z-index: 1;
+      }
+    }
+
+    // alpha面板
+    .color-pikcer__panel_alpha {
+      position: relative;
+      width: 280px;
+      height: 12px;
+      margin-top: 5px;
+      background: url(./alpha_bg.png);
+
+      .alpha_bar {
+        height: 100%;
+      }
+
+      .alpha_thumb {
+        position: absolute;
+        top: 0;
+        cursor: pointer;
+        box-sizing: border-box;
+        width: 4px;
+        height: 100%;
+        border-radius: 1px;
+        background: #fff;
+        border: 1px solid #f0f0f0;
+        box-shadow: 0 0 2px rgba(0, 0, 0, .6);
+        z-index: 1;
+      }
+    }
+
+    // 预显示颜色面板
+    .color-pikcer__panel_pre-color {
+      width: 280px;
+      margin-bottom: 0;
+      list-style-type: none;
+      padding: 0;
+
+      >li {
+        display: inline-block;
+        margin: 8px 8px 0 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &.selected {
+          box-shadow: 0 0 3px 2px #409eff;
+        }
+
+        &.is-alpha {
+          background-image: url(./alpha_bg.png);
+        }
+
+        >div {
+          height: 100%;
+          border-radius: inherit;
+        }
+
+
+
+
+      }
+    }
+
+
+  }
+
+  // 底部
+  .color-picker__bottom {
+    margin-top: 10px;
+
+    .color-input {
+      width: 170px;
+      font-size: 12px;
+    }
+
+    .btn-group {
+      float: right;
+    }
+  }
+}

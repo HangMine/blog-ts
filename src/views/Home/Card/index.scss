@@ -5,7 +5,8 @@
     overflow: hidden;
 
     .h-card-item {
-        width: 33.3%;
+        width: 280px;
+        max-width: 33.3%;
         padding: 15px;
         float: left;
 
@@ -36,7 +37,8 @@
                     margin-bottom: 10px;
                     font-size: 18px;
                     color: $color-font-title;
-                    @include ellipsis(2);
+                    @include ellipsis(1);
+                    display: block;
                 }
 
                 .type {
@@ -97,6 +99,7 @@
                     top: 10px;
                     transition: all .3s;
                     color: white;
+                    @include ellipsis(4);
                 }
             }
 

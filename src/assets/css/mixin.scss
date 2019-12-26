@@ -71,6 +71,7 @@
 @mixin ellipsis($line:1) {
     overflow: hidden;
     text-overflow: ellipsis;
+    word-break: break-all;
 
 
     @if($line==1) {

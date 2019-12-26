@@ -1,0 +1,113 @@
+.h-rich-text {
+  background: white;
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+
+  // 图标样式
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  // 工具栏
+  .tool-bar {
+    margin: 0;
+    list-style-type: none;
+    background-color: #d9d9d9;
+    border-bottom: 1px solid #ccc;
+    font: normal normal normal 14px/1 FontAwesome;
+    cursor: pointer;
+
+    .tool-bar-item {
+      position: relative;
+      display: inline-block;
+
+
+      &:hover {
+        >.iconfont {
+
+          color: #f2f2f2;
+        }
+
+        background-color: #595959;
+
+
+        .tool-bar-child {
+          display: initial;
+        }
+
+        .triangle {
+          display: none;
+        }
+      }
+
+      // 图标
+      .iconfont {
+        display: inline-block;
+        padding: 8px 12px;
+      }
+
+      // 字体
+      .tool-bar-text {
+        display: inline-block;
+        padding: 8px 12px;
+        font-size: 16px;
+      }
+
+      // 右上角三角
+      .triangle {
+        display: inline-block;
+        position: absolute;
+        right: 1px;
+        top: 8px;
+        border-top: 5px solid #999;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+      }
+
+      // 下拉列表
+      .tool-bar-child {
+        z-index: 1;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #d9d9d9;
+
+        .tool-bar-child-item {
+
+          &:hover {
+            color: #f2f2f2;
+            background-color: #595959;
+          }
+        }
+      }
+
+    }
+  }
+
+  // 主内容
+  .content {
+    flex: 1;
+    box-sizing: border-box;
+    overflow: auto;
+    width: calc(100% - 40px);
+    margin: 20px;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #d9d9d9;
+  }
+
+
+  // 源代码编辑框
+  .code-edit {
+    outline: none;
+    border: 1px solid #d9d9d9;
+    padding: 10px;
+  }
+}

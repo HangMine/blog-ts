@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect, useReducer, createContext } from
 import { Router, Route } from "react-router-dom";
 import Index from "@/views";
 import Login from "@/views/Login";
+import Error from "@/views/Error/Error";
 import history from "@/router/history";
 
 import { useDispatch } from "redux-react-hook";
@@ -22,6 +23,7 @@ export const App = () => {
         <Route exact path="/" component={Login}></Route>
         <Route path="/app" component={Index}></Route>
         <Route path="/login" component={Login}></Route>
+        <Route path="/error" component={Error}></Route>
       </div>
     </Router>
   );

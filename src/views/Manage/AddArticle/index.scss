@@ -2,15 +2,13 @@
 
 .add-article {
     $border: 1px solid #d9d9d9;
-
-    height: 100vh;
-    border: $border;
     border-left: none;
-    cursor: pointer;
+
 
     .add-btn {
         padding: 20px;
         border-bottom: $border;
+        cursor: pointer;
 
         .add-btn-icon {
             padding-right: 5px;
@@ -27,8 +25,10 @@
             border-bottom: $border;
             @include ellipsis;
             position: relative;
+            cursor: pointer;
 
-            &:hover {
+            &:hover,
+            &.active {
                 background: #e6e6e6;
                 border-left-color: #ec7259;
             }

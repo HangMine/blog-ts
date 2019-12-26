@@ -1,62 +1,86 @@
-import React, { useState, useEffect } from "react";
+import React, { FC, useState, useEffect, useMemo } from "react";
 import Card from "./Card";
 import "./index.scss";
-import gql from 'graphql-tag';
-import { useQuery, useMutation } from '@/assets/js/graph'
+import { to } from "@/assets/js/common";
+import http from "@/assets/js/http";
+import HFilter from "@/components/HFilter/HFilter";
 
 interface card {
   img: string;
   title: string;
   typeLogo: string;
   typeName: string;
-};
-
-const GET_ARTICLES = gql`
-{
-  articles{
-      id
-      type
-      img 
-      title
-  }
 }
-  `
 
-const GET_ARTICLETYPES = gql`
-{
-  articleTypes{
-      id
-      name
-      icon
-  }
-}
-  `
+const Home: FC = () => {
+  const [cardList, setCardList]: [(card & article)[], any] = useState([]);
+  const [articles, setarticles] = useState([]);
+  const [articleTypes, setarticleTypes]: [articleType[], any] = useState([]);
 
-function Home() {
-  const [cardList, setCardList]: [card[], any] = useState([]);
-  const articles = useQuery(GET_ARTICLES).articles || [];
-  const articleTypes: articleType[] = useQuery(GET_ARTICLETYPES).articleTypes || [];
+  const filters = useMemo(
+    () => [
+      {
+        key: "type",
+        title: "文章类型",
+        type: "select",
+        options: articleTypes
+      }
+    ],
+    [articleTypes]
+  );
 
   useEffect(() => {
-    if (!articles.length || !articleTypes.length) return;
+    http("article.get").then(res => {
+      setarticles(res.data);
+    });
+    http("articleType.get").then(res => {
+      setarticleTypes(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!articles || !articleTypes) return;
     const cardList: card[] = articles.map((article: article) => {
-      const type: articleType = articleTypes.find(type => type.id === article.type) || { id: 0, name: '', icon: '' };
+      const type: articleType = articleTypes.find(
+        type => type.id === article.type
+      ) || { id: 0, name: "", icon: "" };
       const typeInfo = {
         typeLogo: type.icon,
         typeName: type.name
-      }
-      const card: card = { ...article, ...typeInfo }
-      return card
-    })
+      };
+      const card: card = { ...article, ...typeInfo };
+      return card;
+    });
     setCardList(cardList);
-  }, [articles, articleTypes])
+  }, [articles, articleTypes]);
+
+  //跳转到文章详情页
+  const toArticleDetail = (card: obj) => {
+    to(`/app/article`, card);
+  };
+
+  // 搜索
+  const search = (params: obj) => {
+    http("article.get", params).then(res => {
+      console.log(res.data);
+      setarticles(res.data);
+    });
+  };
 
   return (
     <div className="home">
-      <Card> {cardList.map((card: card, i) => <Card.Item key={i} data={card} />)} </Card>
+      <HFilter data={filters} isFilt onSearch={search}></HFilter>
+      <Card>
+        {cardList.map((card: card, i) => (
+          <Card.Item
+            key={i}
+            data={card}
+            onClick={() => toArticleDetail(card)}
+          />
+        ))}
+      </Card>
     </div>
-
-  )
-}
+  );
+};
 
 export default Home;

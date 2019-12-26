@@ -1,0 +1,132 @@
+.h-pop {
+
+  .h-pop-container {
+    display: inline-block;
+  }
+
+}
+
+// 可能会放到body里面
+.h-pop-content-wrap {
+  display: inline-block;
+  position: fixed;
+  box-sizing: content-box;
+
+  // 动画外层
+  .h-pop-transition {
+
+    position: relative;
+    z-index: 1;
+    transform-origin: center top;
+    padding: 12px;
+    box-sizing: content-box;
+
+    // 主内容
+    .h-pop-content {
+      position: relative;
+      display: inline-block;
+      padding: 6px;
+      box-sizing: content-box;
+      background-color: #fff;
+      border: 1px solid #ebeef5;
+      border-radius: 4px;
+      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    }
+
+    // 箭头
+    .h-pop-trend {
+      z-index: 2;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border: 6px solid #fff;
+
+      &.top {
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+      }
+
+      &.bottom {
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+      }
+
+      &.left {
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+      }
+
+      &.right {
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+
+
+
+
+  // 遮罩层
+  .h-pop-mask {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.4);
+
+    &.opacity {
+      background: transparent;
+    }
+  }
+
+
+
+}
+
+
+// -----------------------动画效果
+//入场
+.default-enter,
+.default-appear {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+//入场过程
+.default-enter-active,
+.default-appear-active {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+//入场结束
+.default-enter-done {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+//出场
+.default-exit {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+// 出场过程
+.default-exit-active {
+  opacity: 0;
+  transform: scaleY(0);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+// 出场结束
+.default-exit-done {
+  opacity: 0;
+  transform: scaleY(0);
+}

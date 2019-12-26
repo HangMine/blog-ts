@@ -1,19 +1,31 @@
-import React, { useState, useEffect, useRef, ReactNode, ReactChildren } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  ReactNode,
+  ReactChildren
+} from "react";
 import style from "./index.module.scss";
 import PropTypes from "prop-types";
 
-
-type props = {
+type CollapseProps = {
   header: ReactNode;
   children: ReactNode;
-  initCollapse?: boolean;
+  value: boolean;
+  onChange?: (value: boolean) => void;
 };
 
-function Collapse({ header, children, initCollapse }: props) {
-  const [isCollapse, setIsCollapse] = useState(initCollapse);
+function Collapse({ header, children, value, onChange }: CollapseProps) {
+  const [isCollapse, setIsCollapse] = useState(value);
+
+  useEffect(() => {
+    setIsCollapse(value);
+  }, [value]);
+
   useEffect(() => {
     setStyle();
-  });
+    onChange && onChange(isCollapse);
+  }, [isCollapse]);
   const refBody: any = useRef(null); //这里refBody用any类型暂时去除报错，后续需修改
 
   const setStyle = () => {
@@ -51,7 +63,7 @@ function Collapse({ header, children, initCollapse }: props) {
 }
 
 Collapse.defaultProps = {
-  initCollapse: false,
+  initCollapse: false
 };
 
 export default Collapse;

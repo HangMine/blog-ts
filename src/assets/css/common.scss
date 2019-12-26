@@ -1,6 +1,13 @@
 // 设置显示高度为屏幕高度
-.ant-layout-sider {
+.ant-layout {
     height: 100vh;
+}
+
+// 所有按钮
+.ant-btn {
+    +.ant-btn {
+        margin-left: 10px;
+    }
 }
 
 //提交按钮
