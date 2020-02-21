@@ -17,7 +17,7 @@ class Aside extends PureComponent {
             <svg
               className="icon"
               style={{
-                fontSize: 100,
+                fontSize: 100
               }}
             >
               <use xlinkHref="#icon-shizi" />
@@ -25,21 +25,26 @@ class Aside extends PureComponent {
           }
           title="HangMine"
         />
-        <Menu defaultSelectedKeys={["1"]} defaultOpenKeys={["sub1"]} mode="inline" theme="dark" className="h-menu">
+        <Menu
+          defaultSelectedKeys={["1"]}
+          defaultOpenKeys={["sub1"]}
+          mode="inline"
+          theme="dark"
+          className="h-menu"
+        >
           <SubMenu
             key="sub1"
             title={
               <span>
                 <Icon type="layout" />
-                <span> 客户端 </span>
+                <span> 用户端 </span>
               </span>
             }
           >
             <Menu.Item key="5">
               <Icon type="home" />
-              <Link to='/app/home'> 首页 </Link>
+              <Link to="/app/home"> 首页 </Link>
             </Menu.Item>
-
           </SubMenu>
           <SubMenu
             key="sub2"
@@ -52,9 +57,8 @@ class Aside extends PureComponent {
           >
             <Menu.Item key="9">
               <Icon type="form" />
-              <Link to='/app/manage'> 写文章 </Link>
+              <Link to="/app/manage"> 写文章 </Link>
             </Menu.Item>
-
           </SubMenu>
         </Menu>
       </Sider>

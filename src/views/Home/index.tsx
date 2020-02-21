@@ -24,6 +24,21 @@ const Home: FC = () => {
         title: "文章类型",
         type: "select",
         options: articleTypes
+      },
+      {
+        key: "theme",
+        title: "主题",
+        type: "select",
+        options: [
+          {
+            key: "scenery",
+            title: "风景"
+          },
+          {
+            key: "cartoon",
+            title: "动漫"
+          }
+        ]
       }
     ],
     [articleTypes]

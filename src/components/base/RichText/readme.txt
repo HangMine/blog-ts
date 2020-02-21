@@ -9,6 +9,12 @@
 
 问题记录：
 
+0、现代编辑器可分为iframe设置designMode和普通DOM元素(如DIV)设置contentEditable属性两种方式
+（1）iframe可使编辑内容样式隔离，避免受到原文档的样式影响
+（2）contentEditable,浏览器兼容性差、用户行为难以控制
+（3）如果兼容两者开发需要额外写很多兼容代码，代码量较大(但本次采用兼容开发)
+（4）参考文档：https://blog.csdn.net/weixin_33901843/article/details/91368418
+
 1、按钮的绑定事件用mouseDown而不是click
 
 问题：用click无法获取到选中的内容
